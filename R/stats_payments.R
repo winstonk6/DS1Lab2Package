@@ -15,18 +15,17 @@
 #'
 #'
 stats_payments <- function(data, stat) {
-  if (stat == "mean") {
-    data |>
-      group_by(`DRG Definition`) |>
-      summarize(mean = mean(`Average Medicare Payments`))
-  } else if (stat == "median") {
-    data |>
-      group_by(`DRG Definition`) |>
-      summarize(median = median(`Average Medicare Payments`))
-  } else if (stat == "sd") {
-    data |>
-      group_by(`DRG Definition`) |>
-      summarize(sd = sd(`Average Medicare Payments`))
-  }
+  grouped_data <- data %>%
+    group_by(`DRG Definition`)
+
+  switch(stat,
+         mean = summarise(grouped_data, mean = mean(`Average Medicare Payments`)),
+         median = summarise(grouped_data, median = median(`Average Medicare Payments`)),
+         sd = summarise(grouped_data, sd = sd(`Average Medicare Payments`)),
+         all = summarise(grouped_data,
+                         mean = mean(`Average Medicare Payments`),
+                         median = median(`Average Medicare Payments`),
+                         sd = sd(`Average Medicare Payments`)),
+         stop("Stat should be 'mean', 'median', 'sd', or 'all'."))
 }
 
