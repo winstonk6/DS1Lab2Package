@@ -11,9 +11,9 @@
 #'
 
 
-payments_by_drg_code2 <- function(data, type){
+payments_by_drg_code <- function(data, type){
   switch(type,
-         "Average Covered Changes" = NULL,
+         "Average Covered Charges" = NULL,
          "Average Total Payments" = NULL,
          "Average Medicare Payments" = NULL,
          stop("Argument type should be either 'Average Covered Changes', 'Average Total Payments', or 'Average Medicare Payments'.")
@@ -25,10 +25,10 @@ payments_by_drg_code2 <- function(data, type){
                y = drg_code,
                color = drg_code)) +
     geom_boxplot(outlier.shape = 0.2,
-                 outlier.size = 0.2)
-  theme(legend.position = "none") +
-    theme(plot.title = element_text(hjust = 0.5)) +
-    labs(title = "Boxplot of Payments by DRG code",
-         x = "Average Medicare Payments",
+                 outlier.size = 0.2) +
+    theme(legend.position = "none",
+          plot.title = element_text(hjust = 0.5)) +
+    labs(title = paste("Boxplot of", type, "by DRG code"),
+         x = type,
          y = "DRG code")
- }
+}
