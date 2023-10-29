@@ -3,11 +3,11 @@
 #' @param data a dataframe
 #' @param type a string indicating which type of payment to plot
 #'
-#' @return returns a boxplot of payments by DRG code
+#' @return Returns a boxplot of payments by DRG code
 #' @export
 #'
 #' @examples
-#' payments_by_drg_code2(drg, "Average Medicare Payments")
+#' payments_by_drg_code(drg, "Average Medicare Payments")
 #'
 
 
