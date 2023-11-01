@@ -16,6 +16,13 @@
 
 payments_by_drg_code <- function(data, type){
 
+  switch(type,
+         "Average Covered Charges" = NULL,
+         "Average Total Payments" = NULL,
+         "Average Medicare Payments" = NULL,
+         stop("Type should be either 'Average Covered Changes', 'Average Total Payments', or 'Average Medicare Payments'.")
+         )
+
   data %>%
     mutate(drg_code = substr(`DRG Definition`, 1, 3)) %>%
     ggplot(aes(x = get(type),
