@@ -31,8 +31,9 @@ payments_by_drg_code <- function(data, type){
     geom_boxplot(outlier.shape = 0.2,
                  outlier.size = 0.2) +
     theme(legend.position = "none",
-          plot.title = element_text(hjust = 0.5)) +
+          plot.title = element_text(hjust = 0.5),
+          axis.text.y = element_text(size = 4)) +
     labs(title = paste("Boxplot of", type, "by DRG code"),
          x = type,
-         y = "DRG code")
+         y = "DRG Code")
 }
