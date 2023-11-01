@@ -7,17 +7,18 @@
 payments_by_drg_code(data, type)
 }
 \arguments{
-\item{data}{a dataframe}
+\item{data}{a dataframe. Only the drg dataframe is applicable.}
 
-\item{type}{a string indicating which type of payment to plot}
+\item{type}{a string specifying which type of payment to plot. Must be one of "Average Covered Charges", "Average Total Payments", or "Average Medicare Payments".}
 }
 \value{
-Returns a boxplot of payments by DRG code
+A boxplot of specified type of payments by DRG code.
 }
 \description{
-Boxplot of Payments by DRG Code
+Creates a ggplot boxplot of payments for each DRG code in the drg dataframe.
 }
 \examples{
 payments_by_drg_code(drg, "Average Medicare Payments")
 
+payments_by_drg_code(drg, "Average Covered Charges")
 }

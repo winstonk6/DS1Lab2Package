@@ -1,23 +1,20 @@
 #' Boxplot of Payments by DRG Code
 #'
-#' @param data a dataframe
-#' @param type a string indicating which type of payment to plot
+#'Creates a ggplot boxplot of payments for each DRG code in the drg dataframe.
 #'
-#' @return Returns a boxplot of payments by DRG code
+#' @param data a dataframe. Only the drg dataframe is applicable.
+#' @param type a string specifying which type of payment to plot. Must be one of "Average Covered Charges", "Average Total Payments", or "Average Medicare Payments".
+#'
+#' @return A boxplot of specified type of payments by DRG code.
 #' @export
 #'
 #' @examples
 #' payments_by_drg_code(drg, "Average Medicare Payments")
 #'
+#' payments_by_drg_code(drg, "Average Covered Charges")
 
 
 payments_by_drg_code <- function(data, type){
-  switch(type,
-         "Average Covered Charges" = NULL,
-         "Average Total Payments" = NULL,
-         "Average Medicare Payments" = NULL,
-         stop("Argument type should be either 'Average Covered Changes', 'Average Total Payments', or 'Average Medicare Payments'.")
-         )
 
   data %>%
     mutate(drg_code = substr(`DRG Definition`, 1, 3)) %>%

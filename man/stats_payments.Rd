@@ -7,18 +7,20 @@
 stats_payments(data, stat)
 }
 \arguments{
-\item{data}{a dataframe}
+\item{data}{a dataframe. Only the drg dataframe is applicable.}
 
-\item{stat}{a string name for which statistic to return}
+\item{stat}{a string specifying which statistic to return. Must be one of "mean", "median", "sd", or "all".}
 }
 \value{
-A statistic for average medicare payments grouped by DRG code
+A tibble with the calculated statistic(s) for average Medicare payments, grouped by DRG code.
 }
 \description{
-This function returns the mean, median, or standard deviation for average medicare payments based on the \code{stat} grouped by DRG code.
+Calculates the mean, median, standard deviation, or all of these statistics for average Medicare payments
+based on \code{stat} over all DRG codes.
 }
 \examples{
 stats_payments(drg, "mean")
 
+stats_payments(drg, "all")
 
 }
